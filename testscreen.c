@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "screen.h"
 #include "comm.h"
+#include "sound.h"
 
 int main(void){
 	Position cur = getscreensize();		// get screen size
@@ -31,6 +32,10 @@ int main(void){
 	clearscreen();
 	printf("Color is set back to default\n");
 	getchar();
+	FILE *fp = fopen("test.wav", "r");
+	WAVheader h = readwavhdr(fp);
+	fclose(fp);
+	displaywavhdr(h);
 /*	for (int i=0;i<17;i++){
 	   setcolors(RED,GREEN);
 	   clearscreen();
@@ -80,7 +85,7 @@ int main(void){
 	printf("\u2580\n");
 	usleep(300000);
 	}
-*/	
+*/
   /* printf("The following message will be in BLUE color\n");
    gotoXY(14,35);
    setfgcolor(BLUE);
