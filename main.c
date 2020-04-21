@@ -6,7 +6,7 @@
 #include "sound.h"
 
 int main(void){
-	Position cur = getscreensize();		// get screen size
+	/*Position cur = getscreensize();		// get screen size
 	char postdata[100];
 	sprintf(postdata, "row=%d&col=%d&id=e1900312", cur.row, cur.col);
 	sendpost(URL, postdata);
@@ -32,11 +32,14 @@ int main(void){
 	clearscreen();
 	printf("Color is set back to default\n");
 	getchar();
+	*/
 	FILE *fp = fopen("test.wav", "r");
 	WAVheader h = readwavhdr(fp);
 	displaywavhdr(h);
+	clearscreen();
 	wavdata(h,fp);
 	fclose(fp);
+	getchar();
 /*	for (int i=0;i<17;i++){
 	   setcolors(RED,GREEN);
 	   clearscreen();
